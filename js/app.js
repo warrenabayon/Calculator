@@ -37,23 +37,23 @@ function loadElements() {
   container.appendChild(buttons);
 
   //EVENT
+  let ans = 0
+ 
   const operate = () => {
-    displayBig.textContent += buttons.textContent;
+
+    displayBig.textContent === '0' ? displayBig.textContent = '' : displayBig.textContent; //removes zero
+    displayBig.textContent += buttons.textContent; //display the formula
+
+  
     
+  
 
-    if (buttons.textContent === '=') {
-      const formula = displayBig.textContent.includes('-');
-      const arr = ['3', '-' , '5'];
-      const result =  +arr[0] + - + +arr[2];
-      console.log(result);
-      console.log(formula);
-    }
-
+  
     
   }
 
   buttons.addEventListener('click', operate);
-
+  console.log(ans);
 
  }
   
