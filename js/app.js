@@ -27,7 +27,7 @@ function calculator() {
   
     const numOperators = [7, 8, 9, '÷', 4, 5, 6, 'x', 1, 2, 3, '-', 0, '.', '+', '='] //buttons elements
     let result = 0;
-    let form = '';
+    let form = 0;
     const arr = [];
 
 
@@ -47,6 +47,8 @@ function calculator() {
         if (item === '-' || item === '+' || item === 'x' || item === '÷' || item === '=') {
 
 
+          console.log(arr);
+
           if (form !== '') { //check if the form is empty then dont add
             if (typeof(arr[arr.length -1]) !== 'number') {
               arr.push(+form); 
@@ -54,25 +56,18 @@ function calculator() {
                        
           }
 
-          if (arr.length !== 0) {
-            if (typeof(arr[arr.length - 1]) === 'number') {
-              arr.push(item);
+          if (arr.length !== 0) {// check the length of arr if not 0 then add
+            if (typeof(arr[arr.length - 1]) === 'number') {// if the arr last item is a number
+              arr.push(item); /// add item
             } else {
-              arr[1] = item;}
+              arr[1] = item;} // else add operator
           }
           
-
-         
           
-          form = '';
+          form = 0;// revirth back the value
 
-          console.log(arr);
-          console.log('length: ' + arr.length);
-          
-           
-          
-
-
+         console.log(arr);
+          // console.log('length: ' + arr.length);//check
          
           if (arr.length === 4) {//check if arr is equal to 4
 
@@ -119,11 +114,24 @@ function calculator() {
 
 
         } else {
-          form += item;
-          console.log(form);
-          displayBig.textContent = form; // display
-
           
+          if (form[form.length - 1] === '.') {
+            if (item === '.') {
+
+            } else {
+              form += item;
+              console.log(form);
+              displayBig.textContent = +form; // display
+            }
+  
+          } else {
+            form += item;
+            console.log(form);
+            displayBig.textContent = +form; // display
+          }
+          
+
+
         } 
 
       }
